@@ -43,6 +43,45 @@ const arr = [100, 5];
 console.log(sortMaker(arr));
 
 // problem-4
-function findAddress(obj){
+function findAddress(obj) {
+  const result = [];
 
+  if (obj.hasOwnProperty("state")) {
+    result.push(obj.state);
+  } else {
+    result.push("___");
+  }
+
+  if (obj.hasOwnProperty("house")) {
+    result.push(obj.house);
+  } else {
+    result.push("___");
+  }
+
+  if (obj.hasOwnProperty("society")) {
+    result.push(obj.society);
+  } else {
+    result.push("___");
+  }
+
+  return result.join(",");
 }
+console.log(findAddress({ state: 10, house: "15A" }));
+
+// problem-5
+function canPay(changeArray, totalDue) {
+  const sum = changeArray.reduce(
+    (preValue, currentValue) => preValue + currentValue,
+    0
+  );
+  if (sum === 0) {
+    return "You have not enough money so you can not purchase this product.";
+  } else {
+    if (sum >= totalDue) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+console.log(canPay([1, 2, 10], 5));
